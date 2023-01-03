@@ -105,7 +105,7 @@ See the examples for how to use the result function.
 
 simheight <- simfun( {h <- c(64,69); height<-h[sex]+ rnorm(10,0,3)}, drop='h' )
 
-my.df <- data.frame(sex=rep(c('Male','Female'),each=5))
+my.df <- data.frame(sex=factor(rep(c('Male','Female'),each=5)))
 simdat <- simheight(my.df)
 t.test(height~sex, data=simdat)
 
