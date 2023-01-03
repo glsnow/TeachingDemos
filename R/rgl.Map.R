@@ -16,7 +16,7 @@ function(Map,which,...) {
         tmp.i <- rep( seq(along=x[pfrom:pto]), each=2 )
         tmp.i <- c(tmp.i[-1], 1)
 
-        rgl::rgl.lines(x[tmp.i], y[tmp.i], z[tmp.i], ...)
+        rgl::segments3d(x[tmp.i], y[tmp.i], z[tmp.i], ...)
     }, shape$Pstart + 1, c(shape$Pstart[-1], shape$nVerts + 1))
 
   })

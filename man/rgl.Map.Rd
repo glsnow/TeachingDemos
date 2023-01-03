@@ -40,7 +40,7 @@ if(interactive()){
 
 tz <- maptools:::read.shape('WRLDTZA')
 rgl.Map(tz)
-rgl.spheres(0,0,0,.999, col='darkblue')
+spheres3d(0,0,0,.999, col='darkblue')
 }
 }
 \keyword{ hplot }% at least one, from doc/KEYWORDS
