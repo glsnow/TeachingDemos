@@ -50,7 +50,7 @@
              "resid", "rnorm", "runif", "scatter.smooth", "sd",
              "splinefun", "terms", "var")
   importFrom("utils", "capture.output", "file_test", "flush.console",
-             "str", "tail", "write.table")
+             "str", "head", "tail", "write.table")
 
 
 S3method(plot, dice)
