@@ -3,7 +3,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Plot a map in an rgl window }
 \description{
-  Plots a map (from a Map object from package maptools) on a unit sphere
+  Plots a map (from a Map object from package spData) on a unit sphere
   in an rgl window that can then be interactively rotated.
 }
 \usage{
@@ -32,13 +32,13 @@ use it as an idea, but probably won't work directly.}
 % ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{\code{rgl} in package rgl, \code{plot.Map} in
-  package maptools }
+  package sp }
 \examples{
 if(interactive()){
 # assumes that the time zone shape files have been downloaded
 # from: http://openmap.bbn.com/data/shape/timezone/
 
-tz <- maptools:::read.shape('WRLDTZA')
+tz <- sp:::read.shape('WRLDTZA')
 rgl.Map(tz)
 rgl.spheres(0,0,0,.999, col='darkblue')
 }
