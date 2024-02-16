@@ -6,7 +6,8 @@ Description: Demonstration functions that can be used in a classroom to demonstr
 Maintainer: Greg Snow <538280@gmail.com>
 License: Artistic-2.0
 Date: 2024-02-13
-Suggests: tkrplot, lattice, MASS, rgl, tcltk, tcltk2, png, ggplot2, logspline, spData, sp, sf, R2wd, manipulate
+Suggests: tkrplot, lattice, MASS, rgl, tcltk, tcltk2, png, ggplot2, logspline, spData, sf
+Enhances: manipulate, R2wd
 LazyData: true
 KeepSource: true
 
