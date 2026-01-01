@@ -10,4 +10,5 @@ Suggests: tkrplot, lattice, MASS, rgl, tcltk, tcltk2, png, ggplot2, logspline, s
 Enhances: manipulate, R2wd
 LazyData: true
 KeepSource: true
+URL: https://github.com/glsnow/TeachingDemos
 
