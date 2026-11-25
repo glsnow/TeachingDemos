@@ -27,15 +27,17 @@ ShinyCorExamp(n = 100, seed = 1, initial_cor = 0)
   for different values of the correlation coefficient.
 }
 \value{
-  Called for the side effect of running a Shiny app.  Returns whatever
-  \code{\link[shiny]{runApp}} returns (typically invisible \code{NULL}
-  when the app is stopped).
+  Launches the app in non-blocking mode (via
+  \code{\link[shiny]{startApp}}) and returns a \code{ShinyAppHandle}
+  immediately, so the R console remains available while the app runs
+  in the background.  Use \code{handle$stop()} to stop the app.
 }
 \author{ Greg Snow \email{538280@gmail.com} }
 \seealso{ \code{\link{cor}}, \code{\link{run.cor.examp}} }
 \examples{
 if(interactive()) {
-  ShinyCorExamp()
+  h <- ShinyCorExamp()
+  # h$stop() # run this when finished with the app
 }
 }
 \keyword{ dynamic }

@@ -2,7 +2,7 @@ ShinyCorExamp2 <- function(n=100, seed=1, initial_cor=0) {
   if (!requireNamespace("shiny", quietly = TRUE)) {
     stop("The shiny package is required")
   }
-  shiny::runApp(list(
+  shiny::startApp(list(
     ui = shiny::shinyUI(shiny::fluidPage(
       shiny::titlePanel("Correlation Example"),
       shiny::sidebarLayout(

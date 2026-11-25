@@ -5,7 +5,7 @@ ShinySamplingDistProp <- function() {
   xbar <- numeric(0)
   x <- list()
 
-  shiny::runApp(list(
+  shiny::startApp(list(
     ui = shiny::shinyUI(shiny::fluidPage(
 
       shiny::titlePanel("Sampling Distribution for Proportion"),

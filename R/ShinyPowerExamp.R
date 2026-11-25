@@ -2,7 +2,7 @@ ShinyPowerExamp <- function(n = 1, sd = 1, diff = 0, alpha = 0.05, xmin = -2, xm
   if (!requireNamespace("shiny", quietly = TRUE)) {
     stop("The shiny package is required")
   }
-  shiny::runApp(list(
+  shiny::startApp(list(
     ui = shiny::shinyUI(shiny::fluidPage(
 
       shiny::titlePanel("Power Example"),

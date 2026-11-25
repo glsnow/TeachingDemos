@@ -5,7 +5,7 @@ ShinyConfIntExamp <- function(mean.sim = 100, sd = 10, n = 25, reps = 50,
   }
   method <- match.arg(method)
 
-  shiny::runApp(list(
+  shiny::startApp(list(
     ui = shiny::shinyUI(shiny::fluidPage(
 
       shiny::titlePanel("Confidence Intervals"),

@@ -22,15 +22,17 @@ ShinyNormal()
   Range} button.
 }
 \value{
-  Called for the side effect of running a Shiny app.  Returns whatever
-  \code{\link[shiny]{runApp}} returns (typically invisible \code{NULL}
-  when the app is stopped).
+  Launches the app in non-blocking mode (via
+  \code{\link[shiny]{startApp}}) and returns a \code{ShinyAppHandle}
+  immediately, so the R console remains available while the app runs
+  in the background.  Use \code{handle$stop()} to stop the app.
 }
 \author{ Greg Snow \email{538280@gmail.com} }
 \seealso{ \code{\link{dnorm}}, \code{\link{pnorm}}, \code{\link{qnorm}}, \code{\link{vis.normal}} }
 \examples{
 if(interactive()) {
-  ShinyNormal()
+  h <- ShinyNormal()
+  # h$stop() # run this when finished with the app
 }
 }
 \keyword{ dynamic }

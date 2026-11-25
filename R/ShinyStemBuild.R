@@ -2,7 +2,7 @@ ShinyStemBuild <- function(step = 1) {
   if (!requireNamespace("shiny", quietly = TRUE)) {
     stop("The shiny package is required")
   }
-  shiny::runApp(list(
+  shiny::startApp(list(
     ui = shiny::shinyUI(shiny::fluidPage(
       shiny::titlePanel("Stem and Leaf Construction"),
       shiny::sidebarLayout(

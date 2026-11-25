@@ -8,7 +8,7 @@ ShinyPvalueNormSim <- function(n = 50, mu = 10, mu0 = 10, sigma = 3, sigma0 = 3,
   test <- match.arg(test)
   alternative <- match.arg(alternative)
 
-  shiny::runApp(list(
+  shiny::startApp(list(
     ui = shiny::shinyUI(shiny::fluidPage(
 
       shiny::titlePanel("Normal P-value Simulator"),

@@ -1,8 +1,17 @@
-ShinyBoxplotBuild <- function(step = 1) {
+ShinyBoxplotBuild <- function(data = datasets::precip, xlab, step = 1) {
   if (!requireNamespace("shiny", quietly = TRUE)) {
     stop("The shiny package is required")
   }
-  shiny::runApp(list(
+
+  if(missing(xlab)) {
+    if(missing(data)) {
+      xlab <- "precip"
+    } else {
+      xlab <- deparse(substitute(data))
+    }
+  }
+
+  shiny::startApp(list(
     ui = shiny::shinyUI(shiny::fluidPage(
       shiny::titlePanel("BoxPlot Construction"),
       shiny::sidebarLayout(
@@ -16,22 +25,22 @@ ShinyBoxplotBuild <- function(step = 1) {
     )),
     server = shiny::shinyServer(function(input, output) {
 
-      med <- median(datasets::precip)
-      q1 <- median(datasets::precip[datasets::precip < med])
-      q3 <- median(datasets::precip[datasets::precip > med])
+      med <- median(data)
+      q1 <- median(data[data < med])
+      q3 <- median(data[data > med])
       iqr <- q3 - q1
       lf <- q1 - 1.5 * iqr
       uf <- q3 + 1.5 * iqr
-      mn <- min(datasets::precip[datasets::precip >= lf])
-      mx <- max(datasets::precip[datasets::precip <= uf])
+      mn <- min(data[data >= lf])
+      mx <- max(data[data <= uf])
 
       titles <- c("Set up Axis",
                   "Sort Data",
                   "Find Median",
                   "Find Q1 and Q3",
-                  "IQR = 13.7",
-                  "q1 - 1.5 * IQR = 0.55",
-                  "q3 + 1.5 * IQR = 63.35",
+                  paste0("IQR = ", format(iqr, digits=3)),
+                  paste0("q1 - 1.5 * IQR = ", format(lf, digits=3)),
+                  paste0("q3 + 1.5 * IQR = ", format(uf, digits=3)),
                   "Minimum and Maximum within fences",
                   "Draw Lines",
                   "Draw Box",
@@ -43,11 +52,12 @@ ShinyBoxplotBuild <- function(step = 1) {
       output$bpPlot <- shiny::renderPlot({
 
         plot.new()
-        plot.window(xlim = c(0, 80), ylim = c(-1, 2))
+        plot.window(xlim = range(pretty(c(data, lf, uf))), 
+                    ylim = c(-1, 2))
         axis(1)
 
-        if (input$step > 1 & input$step < 13) rug(datasets::precip)
-        if (input$step > 2 & input$step < 13) abline(v = med, col = '#00ff0088')
+        if (input$step > 1 & input$step < 13) rug(data)
+        if (input$step > 2 & input$step < 13) abline(v = med, col = '#228b2288')
         if (input$step > 3 & input$step < 13) abline(v = c(q1, q3), col = '#0000ff88')
         if (input$step > 5 & input$step < 13) abline(v = lf, col = '#ff000088')
         if (input$step > 6 & input$step < 13) abline(v = uf, col = '#ff000088')
@@ -63,10 +73,12 @@ ShinyBoxplotBuild <- function(step = 1) {
           segments(x0 = c(mn, mx), x1 = c(q1, q3), y0 = 0.5, lty = 2)
         }
         if (input$step > 11) {
-          points(datasets::precip[datasets::precip < lf | datasets::precip > uf], rep(0.5, 5))
+          points(data[data < lf | data > uf], 
+            rep(0.5, sum(data < lf | data > uf)))
         }
 
-        title(main = titles[input$step])
+        title(main = titles[input$step],
+              xlab = xlab)
 
       })
 

@@ -8,7 +8,7 @@ ShinyPvalueBinomSim <- function(n = 100, p = 0.5, p0 = 0.5,
   test <- match.arg(test)
   alternative <- match.arg(alternative)
 
-  shiny::runApp(list(
+  shiny::startApp(list(
     ui = shiny::shinyUI(shiny::fluidPage(
 
       shiny::titlePanel("Binomial P-value Simulator"),

@@ -35,15 +35,17 @@ ShinyPvalueNormSim(n = 50, mu = 10, mu0 = 10, sigma = 3, sigma0 = 3,
   as equal variance) are violated.
 }
 \value{
-  Called for the side effect of running a Shiny app.  Returns whatever
-  \code{\link[shiny]{runApp}} returns (typically invisible \code{NULL}
-  when the app is stopped).
+  Launches the app in non-blocking mode (via
+  \code{\link[shiny]{startApp}}) and returns a \code{ShinyAppHandle}
+  immediately, so the R console remains available while the app runs
+  in the background.  Use \code{handle$stop()} to stop the app.
 }
 \author{ Greg Snow \email{538280@gmail.com} }
 \seealso{ \code{\link{Pvalue.norm.sim}}, \code{\link{ShinyPvalueBinomSim}} }
 \examples{
 if(interactive()) {
-  ShinyPvalueNormSim()
+  h <- ShinyPvalueNormSim()
+  # h$stop() # run this when finished with the app
 }
 }
 \keyword{ dynamic }
