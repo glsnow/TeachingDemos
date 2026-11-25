@@ -1,3 +1,22 @@
+TeachingDemos version 2.14
+
+* Added several functions that create shiny demos (ShinyCorExamp,
+  ShinyCorExamp2, ShinyHistogramBuild, ShinyStemBuild, ShinyBoxplotBuild,
+  ShinyHistogramExamp, ShinyPutPoints, ShinyNormal, ShinySamplingDistProp,
+  ShinySamplingDistMean, ShinyCLTExamp, ShinyConfIntExamp, ShinyPowerExamp,
+  ShinyPvalueNormSim, ShinyPvalueBinomSim), some are wrappers for other
+  functions already in the package.
+
+* The shiny demo functions now launch their apps with shiny::startApp
+  instead of shiny::runApp so that they run in the background without
+  blocking the R console.  Each function returns a ShinyAppHandle that
+  can be stopped with handle$stop() when you are finished with the demo.
+
+* Updated plot.rgl.coin, rgl.die (in plot.rgl.die.R), flip.rgl.coin,
+  roll.rgl.die, and rgl.Map to use current (non-deprecated) rgl
+  functions (e.g. view3d, quads3d, triangles3d) in place of the
+  deprecated rgl.viewpoint, rgl.quads, rgl.triangles, etc.
+
 TeachingDemos version 2.13
 
 * Updated rgl.Map to use new packages
